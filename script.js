@@ -1,6 +1,6 @@
 const pinballMachines = [
   { name: "Attack from Mars", key: "attackfrommars"},
-  { name: "Iron Maiden - Legacy of the Beast"},
+  { name: "Iron Maiden - Legacy of the Beast", key: "ironmaiden"},
   { name: "Godzilla", key: "godzilla"},
   { name: "Scared Stiff", key: "scaredstiff"},
   { name: "Elton John", key: "eltonjohn"},
