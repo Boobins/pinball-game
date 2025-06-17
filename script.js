@@ -13,10 +13,20 @@ let selectedMachine = null;
 let lives = 6;
 let guessStage = 0;
 const totalStages = 6;
+let availableMachines = [...pinballMachines];
 
 function startGame() {
-  const randomIndex = Math.floor(Math.random() * pinballMachines.length);
-  selectedMachine = pinballMachines[randomIndex];
+  if (availableMachines.length === 0) {
+    alert("🎉 You've guessed all the pinball machines!");
+    return;
+  }
+
+  const randomIndex = Math.floor(Math.random() * availableMachines.length);
+  selectedMachine = availableMachines[randomIndex];
+
+  // Remove it from the pool
+  availableMachines.splice(randomIndex, 1);
+
   updateImage();
   document.getElementById("status").innerText = `${lives} lives remaining`;
 }
