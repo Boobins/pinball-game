@@ -10,7 +10,7 @@ const pinballMachines = [
 ];
 
 let selectedMachine = null;
-let lives = 5;
+let lives = 6;
 let guessStage = 0;
 const totalStages = 6;
 
@@ -76,7 +76,7 @@ function updateImage() {
 }
 
 function resetGame() {
-  lives = 5;
+  lives = 6;
   guessStage = 0;
   selectedMachine = null;
   document.getElementById("guessInput").value = "";
