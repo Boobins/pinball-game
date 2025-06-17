@@ -1,15 +1,16 @@
 const pinballMachines = [
-  { name: "Attack from Mars", key: "attackfrommars" },
-  { name: "Iron Maiden - Legacy of the Beast", key: "ironmaiden" },
-  { name: "Godzilla", key: "godzilla" },
-  { name: "Scared Stiff", key: "scaredstiff" },
-  { name: "Elton John", key: "eltonjohn" },
-  { name: "Foo Fighters", key: "foofighters" },
-  { name: "Medieval Madness", key: "medievalmadness" }
+  { name: "Attack from Mars", key: "attackfrommars"},
+  { name: "Iron Maiden - Legacy of the Beast"},
+  { name: "Godzilla", key: "godzilla"},
+  { name: "Scared Stiff", key: "scaredstiff"},
+  { name: "Elton John", key: "eltonjohn"},
+  { name: "Foo Fighters", key: "foofighters"},
+  { name: "The Uncanny X-men", key: "xmen"},
+  { name: "Medieval Madness", key: "medievalmadness"}
 ];
 
 let selectedMachine = null;
-let lives = 6;
+let lives = 5;
 let guessStage = 0;
 const totalStages = 6;
 
@@ -50,8 +51,9 @@ function makeGuess() {
 }
 
 function skip() {
-  lives--;
   guessStage++;
+  lives--;
+
 
   if (guessStage >= totalStages) {
     guessStage = totalStages - 1;
@@ -74,7 +76,7 @@ function updateImage() {
 }
 
 function resetGame() {
-  lives = 6;
+  lives = 5;
   guessStage = 0;
   selectedMachine = null;
   document.getElementById("guessInput").value = "";
