@@ -23,9 +23,9 @@ const pinballMachines = [
 ];
 
 let selectedMachine = null;
-let lives = 6;
+let lives = 5;
 let guessStage = 0;
-const totalStages = 6;
+const totalStages = 5;
 let availableMachines = [...pinballMachines];
 
 function startGame() {
@@ -66,8 +66,7 @@ function makeGuess() {
   updateImage();
 
   if (lives <= 0) {
-    alert("❌ Game over! The correct answer was: " + selectedMachine.name);
-    resetGame();
+   showGameOver();
   } else {
     document.getElementById("status").innerText = `${lives} lives remaining`;
   }
@@ -85,8 +84,7 @@ function skip() {
   updateImage();
 
   if (lives <= 0) {
-    alert("❌ Out of lives! The correct answer was: " + selectedMachine.name);
-    resetGame();
+    showGameOver();
     return;
   }
 
@@ -99,12 +97,23 @@ function updateImage() {
 }
 
 function resetGame() {
-  lives = 6;
-  guessStage = 0;
-  selectedMachine = null;
   document.getElementById("guessInput").value = "";
+  document.getElementById("gameOverModal").classList.add("hidden");
+  lives = 5;
+  guessStage = 0;
   startGame();
 }
+
+function showGameOver() {
+  const modal = document.getElementById("gameOverModal");
+  const finalImage = document.getElementById("finalImage");
+  const message = document.getElementById("gameOverMessage");
+
+  finalImage.src = `images/${selectedMachine.key}/${selectedMachine.key}-5.jpg`;
+  message.innerText = `Game over! The correct answer was: ${selectedMachine.name}`;
+  modal.classList.remove("hidden");
+}
+
 
 function showSuggestions() {
   const input = document.getElementById("guessInput").value.toLowerCase();
