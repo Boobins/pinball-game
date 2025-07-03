@@ -6,6 +6,19 @@ const pinballMachines = [
   { name: "Elton John", key: "eltonjohn"},
   { name: "Foo Fighters", key: "foofighters"},
   { name: "The Uncanny X-men", key: "xmen"},
+  { name: "Monster Bash", key: "monsterbash"},
+  { name: "Creature from the Black Lagoon", key: "creature"},
+  { name: "Rush", key: "rush"},
+  { name: "Avengers: Infinity Quest", key: "avengers"},
+  { name: "James Bond 007", key: "bond"},
+  { name: "World Cup Soccer", key: "soccer"},
+  { name: "The Addams Family", key: "addams"},
+  { name: "Whirlwind", key: "whirlwind"},
+  { name: "Junk Yard", key: "junkyard"},
+  { name: "Jaws", key: "jaws"},
+  { name: "TRON: Legacy", key: "tron"},
+  { name: "Metallica", key: "metallica"},
+  { name: "Deadpool", key: "deadpool"},
   { name: "Medieval Madness", key: "medievalmadness"}
 ];
 
