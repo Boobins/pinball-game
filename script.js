@@ -25,6 +25,7 @@ const pinballMachines = [
 let selectedMachine = null;
 let lives = 5;
 let guessStage = 0;
+let guesses = 1;
 const totalStages = 5;
 let availableMachines = [...pinballMachines];
 
@@ -56,15 +57,14 @@ function makeGuess() {
 
 
   if (userGuess === selectedMachine.name) {
-    alert("🎉 Correct! You win!");
-    resetGame();
+    showWinModal(); 
     return;
   }
 
   lives--;
   guessStage++;
   updateImage();
-
+  guesses ++;
   if (lives <= 0) {
    showGameOver();
   } else {
@@ -74,6 +74,7 @@ function makeGuess() {
 
 function skip() {
   guessStage++;
+  guesses ++;
   lives--;
 
 
@@ -99,7 +100,9 @@ function updateImage() {
 function resetGame() {
   document.getElementById("guessInput").value = "";
   document.getElementById("gameOverModal").classList.add("hidden");
+  document.getElementById("winModal").classList.add("hidden");
   lives = 5;
+  guesses = 1;
   guessStage = 0;
   startGame();
 }
@@ -112,6 +115,41 @@ function showGameOver() {
   finalImage.src = `images/${selectedMachine.key}/${selectedMachine.key}-5.jpg`;
   message.innerText = `Game over! The correct answer was: ${selectedMachine.name}`;
   modal.classList.remove("hidden");
+}
+
+function showWinModal() {
+  const modal = document.getElementById("winModal");
+  const finalImage = document.getElementById("finalWinImage");
+  const message = document.getElementById("winMessage");
+
+  finalImage.src = `images/${selectedMachine.key}/${selectedMachine.key}-5.jpg`;
+  message.innerText = `🎉 Correct! The machine was: ${selectedMachine.name}\nYou guessed it in ${guesses} ${guesses === 1 ? 'try' : 'tries'}!`;
+  modal.classList.remove("hidden");
+
+  launchConfetti(); // Optional: trigger confetti!
+}
+
+function launchConfetti() {
+  const confettiCanvas = confetti.create(null, {
+    resize: true,
+    useWorker: true,
+  });
+
+  confettiCanvas({
+    particleCount: 150,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+
+  // 🆕 Move confetti canvas to top layer
+  const canvas = document.querySelector("canvas");
+  if (canvas) {
+    canvas.style.position = "fixed";
+    canvas.style.top = "0";
+    canvas.style.left = "0";
+    canvas.style.pointerEvents = "none";
+    canvas.style.zIndex = "2000"; // Higher than modal (1000)
+  }
 }
 
 
@@ -140,5 +178,8 @@ function showSuggestions() {
   });
 }
 
+
+
 // Start the game when the page loads
 window.onload = startGame;
+

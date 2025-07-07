@@ -89,6 +89,25 @@ button:nth-child(2) {
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
+.modal-content button {
+  background-color: #444;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #666;
+}
+
+#winModal button {
+  background-color: #28a745; /* green */
+}
+
+
 .modal-content img {
   width: 300px;
   max-width: 100%;
